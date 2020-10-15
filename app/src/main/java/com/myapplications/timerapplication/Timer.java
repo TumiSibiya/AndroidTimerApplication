@@ -54,6 +54,7 @@ public class Timer extends AppCompatActivity {
         setContentView(R.layout.timer_activity);
         setTitle("Timer");
 
+        Log.d(TAG,"INSIDE CREATE");
 
         hourEditText = findViewById(R.id.hours_edit_text_id);
         minuteEditText = findViewById(R.id.minute_edit_text_id);
@@ -270,6 +271,7 @@ public class Timer extends AppCompatActivity {
             if (buttonStartPauseTimer.getText().equals("Pause")) {
                 //TODO add some cool features on active countdown and buttonStartPause getText(); return Pause and view
             }
+
 
         }
         updateCountDownTimerTextView();
