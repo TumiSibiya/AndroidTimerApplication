@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TimerApplication</string>
+    <string name="startButtonpress">Start</string>
+
+</resources>
