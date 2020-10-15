@@ -2,4 +2,7 @@
     <string name="app_name">TimerApplication</string>
     <string name="startButtonpress">Start</string>
 
+    <string name="resetButtonpress">Reset</string>
+    <string name="Buttonpress">Start</string>
+
 </resources>

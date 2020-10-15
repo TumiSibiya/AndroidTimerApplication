@@ -48,8 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="@string/resetbuttonpress"
-        android:textColor="@color/resetbuttoncolor"
+        android:text="@string/resetButtonpress"
+
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
 
@@ -72,7 +72,7 @@
         android:maxLength="4"
 
         android:textColor="@color/startbuttoncolor"
-        android:textColorHint="@color/hintTextColorLightGrey"
+
         android:visibility="invisible"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -93,7 +93,7 @@
         android:maxLength="4"
 
         android:textColor="@color/startbuttoncolor"
-        android:textColorHint="@color/hintTextColorLightGrey"
+
         android:visibility="invisible"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -156,4 +156,3 @@
         app:layout_constraintVertical_bias="0.976" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-    ut.widget.ConstraintLayout>
