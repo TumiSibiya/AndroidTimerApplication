@@ -34,7 +34,6 @@
         android:layout_height="wrap_content"
 
         android:text="@string/startButtonpress"
-        android:textColor="@color/startbuttoncolor"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonRestTimerId"
@@ -71,8 +70,6 @@
         android:inputType="number"
         android:maxLength="4"
 
-        android:textColor="@color/startbuttoncolor"
-
         android:visibility="invisible"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -91,8 +88,6 @@
         android:hint="hour"
         android:inputType="number"
         android:maxLength="4"
-
-        android:textColor="@color/startbuttoncolor"
 
         android:visibility="invisible"
 

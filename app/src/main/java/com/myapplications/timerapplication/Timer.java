@@ -1,5 +1,5 @@
 package com.myapplications.timerapplication;
-
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -25,7 +25,7 @@ import static android.widget.Toast.LENGTH_SHORT;
  *
  * */
 
-public class TimerActivity extends AppCompatActivity {
+public class Timer extends AppCompatActivity {
 
 
     public long start_time_in_millis = 0;
@@ -46,7 +46,7 @@ public class TimerActivity extends AppCompatActivity {
     CountDownTimer countDownTimer;
     boolean isRunning;
 
-    private String TAG = TimerActivity.class.getName();
+    private String TAG = Timer.class.getName();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,7 +105,7 @@ public class TimerActivity extends AppCompatActivity {
 
 
                     if (minuteString.length() == 0) {
-                        Toast.makeText(TimerActivity.this, "Invalid Number", LENGTH_SHORT).show();
+                        Toast.makeText(Timer.this, "Invalid Number", LENGTH_SHORT).show();
                         return;
 
                     }else {
