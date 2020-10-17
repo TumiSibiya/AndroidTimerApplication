@@ -4,11 +4,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ProgressBar;
 
 import java.util.Locale;
 
@@ -44,6 +46,10 @@ public class Timer extends AppCompatActivity {
     CountDownTimer countDownTimer;
     boolean isRunning;
 
+    ProgressBar timerProgressBar;
+    int progressDivider = 100;
+    int timerProgressBarTime = (int)start_time_in_millis;
+
     private String TAG = Timer.class.getName();
 
     @Override
@@ -68,6 +74,8 @@ public class Timer extends AppCompatActivity {
 
         buttonNewTime = findViewById(R.id.button_NewTime_id);
 
+        timerProgressBar = findViewById(R.id.progressBar);
+
         //setButtonActions
         buttonStartPauseTimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +83,7 @@ public class Timer extends AppCompatActivity {
                 if (!isRunning) {
                     if(time_left_in_millis == 0){
                         Toast.makeText(Timer.this, "Time Up ", Toast.LENGTH_SHORT).show();
-                        buttonNewTime.setVisibility(View.VISIBLE);
+                        buttonNewTime.setClickable(true);
                     }else{
 
                         startCountDownTimer();
@@ -183,12 +191,16 @@ public class Timer extends AppCompatActivity {
             public void onTick(long timeUntilFinish) {
                 time_left_in_millis = timeUntilFinish;
 
+                timerProgressBarTime = (int)(timeUntilFinish / progressDivider);
+                timerProgressBar.setProgress(timerProgressBarTime);
+
                 updateCountDownTimerTextView();
                 updateInterface();
             }
 
             @Override
             public void onFinish() {
+                timerProgressBar.setProgress(0);
                 isRunning = false;
                 updateInterface();
             }
@@ -245,20 +257,22 @@ public class Timer extends AppCompatActivity {
 
                 buttonStartPauseTimer.setText("Start");
                 buttonResetTimer.setVisibility(View.VISIBLE);
-                buttonNewTime.setVisibility(View.VISIBLE);
+
 
             } else {//lest fo this
 
                 buttonStartPauseTimer.setText("Start");
                 buttonResetTimer.setVisibility(View.INVISIBLE);
-                buttonNewTime.setVisibility(View.INVISIBLE);
+
             }
+
+            buttonNewTime.setClickable(true);
 
         } else {//or else if time is running do this
 
             buttonStartPauseTimer.setText("Pause");
             buttonResetTimer.setVisibility(View.INVISIBLE);
-            buttonNewTime.setVisibility(View.INVISIBLE);
+            buttonNewTime.setClickable(false);
 
             if (buttonStartPauseTimer.getText().equals("Pause")) {
                 //TODO add some cool features on active countdown and buttonStartPause getText(); return Pause and view
@@ -266,6 +280,7 @@ public class Timer extends AppCompatActivity {
 
 
         }
+        timerProgressBar.setProgress(((int)time_left_in_millis / progressDivider));
         updateCountDownTimerTextView();
 
     }

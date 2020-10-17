@@ -6,27 +6,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:padding="50dp"
-    android:paddingHorizontal="15dp"
-    android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth">
+    android:padding="5dp"
+    android:paddingHorizontal="1dp">
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="364dp"
+        android:layout_height="481dp"
+
+        android:background="@drawable/circular_shape"
+        android:indeterminate="false"
+
+        android:max="1000"
+        android:progress="100"
+
+        android:progressDrawable="@drawable/circular_progress_bar"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505"/>
+
 
     <TextView
         android:id="@+id/textviewfortimer"
         android:layout_width="200dp"
         android:layout_height="114dp"
         android:gravity="center"
-        android:text=""
+        android:text="0000"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="50sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36"
+        app:layout_constraintVertical_bias="0.47"
         tools:visibility="invisible" />
-
 
     <Button
         android:id="@+id/buttonStartPauseTimerId"
@@ -34,13 +55,14 @@
         android:layout_height="wrap_content"
 
         android:text="@string/startButtonpress"
-
+        android:textColor="@android:color/holo_green_dark"
+        android:backgroundTint="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonRestTimerId"
-        app:layout_constraintHorizontal_bias="0.577"
+        app:layout_constraintHorizontal_bias="0.746"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.613" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <Button
         android:id="@+id/buttonRestTimerId"
@@ -48,15 +70,16 @@
         android:layout_height="wrap_content"
 
         android:text="@string/resetButtonpress"
-
+        android:textColor="@android:color/black"
+        android:backgroundTint="@android:color/transparent"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.808"
+        app:layout_constraintHorizontal_bias="0.696"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.617"
+        app:layout_constraintVertical_bias="0.598"
         tools:visibility="visible" />
 
     <EditText
@@ -67,6 +90,7 @@
         android:ems="10"
         android:gravity="center"
         android:hint="minute"
+        android:textColor="@android:color/holo_green_light"
         android:inputType="number"
         android:maxLength="4"
 
@@ -86,6 +110,7 @@
         android:ems="10"
         android:gravity="center"
         android:hint="hour"
+        android:textColor="@android:color/holo_green_light"
         android:inputType="number"
         android:maxLength="4"
 
@@ -106,14 +131,15 @@
         android:text="set"
 
         android:textColor="@android:color/holo_blue_dark"
+        android:background="@android:color/transparent"
         android:visibility="invisible"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintHorizontal_bias="0.829"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976"
+        app:layout_constraintVertical_bias="0.781"
         tools:visibility="visible" />
 
     <Button
@@ -121,16 +147,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:background="@android:color/transparent"
         android:text="Clear"
         android:textColor="@android:color/holo_blue_dark"
         android:visibility="invisible"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
+        app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976"
+        app:layout_constraintVertical_bias="0.773"
         tools:visibility="visible" />
 
     <Button
@@ -140,14 +167,14 @@
 
 
         android:text="NEW TIME"
-
         android:textColor="@android:color/holo_green_dark"
 
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.877" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
