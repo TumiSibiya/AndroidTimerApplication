@@ -34,6 +34,7 @@ public class Timer extends AppCompatActivity {
 
     EditText hourEditText;
     EditText minuteEditText;
+    EditText secondEditText;
 
     TextView timerTextView;
 
@@ -52,6 +53,8 @@ public class Timer extends AppCompatActivity {
 
     private String TAG = Timer.class.getName();
 
+    long total;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +65,7 @@ public class Timer extends AppCompatActivity {
 
         hourEditText = findViewById(R.id.hours_edit_text_id);
         minuteEditText = findViewById(R.id.minute_edit_text_id);
+        secondEditText = findViewById(R.id.seconds_edit_text_id);
 
         timerTextView = findViewById(R.id.textviewfortimer);
 
@@ -103,6 +107,7 @@ public class Timer extends AppCompatActivity {
             }
         });
 
+
         buttonSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,42 +118,62 @@ public class Timer extends AppCompatActivity {
 
                 String minuteString = minuteEditText.getText().toString();
 
-                long total;
+                String secondString = secondEditText.getText().toString();
+
+
 
                 if(hourString.length() == 0){
 
 
                     if (minuteString.length() == 0) {
-                        Toast.makeText(Timer.this, "Invalid Number", LENGTH_SHORT).show();
-                        return;
 
-                    }else {
+                        if(secondString.length() == 0) {
+                            Toast.makeText(Timer.this, "Invalid Number", LENGTH_SHORT).show();
+                            return;
+                        }
 
+                        total = Long.parseLong(secondString) * 1000;
+
+
+                    }else if(secondString.length() !=0){
+
+                        long minute = Long.parseLong(minuteString) * 60000;
+                        long second = Long.parseLong(secondString) * 1000;
+
+                        total = minute + second;
+
+                    }else{
                         total = Long.parseLong(minuteString) * 60000;
-                        setTime(total);
-
                     }
+
+                    //total = Long.parseLong(minuteString);
 
                 }else {
 
-                    long hour = Long.parseLong(hourString);
+                    long hour = Long.parseLong(hourString) *  360_000 * 10;
+                    Log.d(TAG, "After parsing hours is now "+ hour);
 
-                    hour = hour * 360_000 *10;
-
-                    if(minuteString.length() == 0){
+                    if(minuteString.length() == 0 && secondString.length() == 0) {
 
                         total = hour;
 
-                    }else{
+                    }else if(secondString.length() == 0){
 
                         long minute = Long.parseLong(minuteString) * 60000;
 
                         total = minute + hour;
 
+                    }else{
+
+                        long minute = Long.parseLong(minuteString) * 60000;
+                        long second = Long.parseLong(secondString) * 1000;
+
+                        total = hour + minute+ second;
                     }
-                    setTime(total);
+
                 }
 
+                setTime(total);
                 resetCountDownTimer();
                 updateCountDownTimerTextView();
                 updateInterface();
@@ -210,7 +235,6 @@ public class Timer extends AppCompatActivity {
 
     public void pauseCountDownTimer() {
         countDownTimer.cancel();
-        //buttonStartPauseTimer.setText(R.string.resumeButtonPress);
         isRunning = false;
         updateInterface();
     }
@@ -229,21 +253,30 @@ public class Timer extends AppCompatActivity {
     public void updateCountDownTimerTextView() {
 
         int hours = (int) (time_left_in_millis / 1000) / 3600;
-        Log.d(TAG, "Hourse returned : " + hours);
+        Log.d(TAG, "Hours returned : " + hours);
 
         int minutes = (int) ((time_left_in_millis / 1000) % 3600) / 60;
         Log.d(TAG, "Minutes returned :" + minutes);
 
-        int seconds = (int) (time_left_in_millis / 1000) % 60;
-        Log.d(TAG, "econdes returned : " + seconds);
+        int seconds = (int)((time_left_in_millis / 1000) % 60 );
+        Log.d(TAG, "Seconds returned : " + seconds);
 
         String formattedTimeLeftInMillis;
 
         if (hours == 0) {
-            formattedTimeLeftInMillis = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-        } else {
+
+            if(minutes ==0){
+                formattedTimeLeftInMillis = String.format(Locale.getDefault(), "%02d", seconds);
+
+            }else{
+                formattedTimeLeftInMillis = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+            }
+
+        } else{
+
             formattedTimeLeftInMillis = String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds);
         }
+
         timerTextView.setText(formattedTimeLeftInMillis);
     }
 
@@ -301,6 +334,7 @@ public class Timer extends AppCompatActivity {
 
             hourEditText.setVisibility(View.VISIBLE);
             minuteEditText.setVisibility(View.VISIBLE);
+            secondEditText.setVisibility(View.VISIBLE);
 
             buttonNewTime.setText("Cancel");
 
@@ -317,6 +351,7 @@ public class Timer extends AppCompatActivity {
 
             hourEditText.setVisibility(View.INVISIBLE);
             minuteEditText.setVisibility(View.INVISIBLE);
+            secondEditText.setVisibility(View.INVISIBLE);
 
             buttonNewTime.setText("NEW TIME");
 

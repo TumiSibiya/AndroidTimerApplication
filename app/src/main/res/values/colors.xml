@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008183</color>
-    <color name="colorPrimaryDark">#00A4B3</color>
+    <color name="colorPrimary">#90000000</color>
+    <color name="colorPrimaryDark">#494949</color>
+
+    <color name="progressBarColor">#00D7FD</color>
+    <color name="shapeCircleeColor">#F2BDC3C5</color>
 </resources>

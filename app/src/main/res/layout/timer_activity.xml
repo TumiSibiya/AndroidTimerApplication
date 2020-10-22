@@ -26,11 +26,9 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.505"/>
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textviewfortimer"
@@ -84,15 +82,15 @@
 
     <EditText
         android:id="@+id/minute_edit_text_id"
-        android:layout_width="89dp"
-        android:layout_height="76dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
 
         android:ems="10"
         android:gravity="center"
         android:hint="minute"
         android:textColor="@android:color/holo_green_light"
         android:inputType="number"
-        android:maxLength="4"
+        android:maxLength="2"
 
         android:visibility="invisible"
 
@@ -100,19 +98,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.441"
+        app:layout_constraintVertical_bias="0.5"
         tools:visibility="visible" />
 
     <EditText
         android:id="@+id/hours_edit_text_id"
-        android:layout_width="87dp"
-        android:layout_height="89dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:ems="10"
         android:gravity="center"
         android:hint="hour"
         android:textColor="@android:color/holo_green_light"
         android:inputType="number"
-        android:maxLength="4"
+        android:maxLength="2"
 
         android:visibility="invisible"
 
@@ -120,7 +118,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.227"
+        app:layout_constraintVertical_bias="0.4"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/seconds_edit_text_id"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="seconds"
+        android:textColor="@android:color/holo_green_light"
+        android:inputType="number"
+        android:maxLength="2"
+
+        android:visibility="invisible"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6"
         tools:visibility="visible" />
 
     <Button
