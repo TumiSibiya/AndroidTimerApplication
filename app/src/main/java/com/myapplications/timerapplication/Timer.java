@@ -1,9 +1,16 @@
 package com.myapplications.timerapplication;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+
 import android.content.SharedPreferences;
+
 import android.os.Bundle;
+import android.os.Build;
 import android.os.CountDownTimer;
-import android.util.Log;
 
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +18,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ProgressBar;
+
+import android.util.Log;
 
 import java.util.Locale;
 
@@ -62,6 +71,9 @@ public class Timer extends AppCompatActivity {
         setTitle("Timer");
 
         Log.d(TAG,"INSIDE CREATE");
+
+        //setting up notification
+        createNotificationChannel();
 
         hourEditText = findViewById(R.id.hours_edit_text_id);
         minuteEditText = findViewById(R.id.minute_edit_text_id);
@@ -226,6 +238,7 @@ public class Timer extends AppCompatActivity {
             @Override
             public void onFinish() {
                 timerProgressBar.setProgress(0);
+                notifyUser();
                 isRunning = false;
                 updateInterface();
             }
@@ -358,6 +371,34 @@ public class Timer extends AppCompatActivity {
         }
     }
 
+    //creating and setting up notification;
+    public void notifyUser(){
+
+        NotificationCompat.Builder notificationCompatBuilder = new NotificationCompat.Builder(this, "timeUpId")
+                .setSmallIcon(R.drawable.ic_timer_24)
+                .setContentTitle("Countdown")
+                .setContentText("Time up")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+         notificationManagerCompat.notify(1, notificationCompatBuilder.build());
+    }
+    public void createNotificationChannel(){
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+
+            CharSequence name = "Timer";
+            String description = "Time up";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+            NotificationChannel channel = new NotificationChannel("timeUpId", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+    }
     //this feature requires attentions
     //delete android:screenOrientation="portrait" on Manifiest for default features or go Auto
 
